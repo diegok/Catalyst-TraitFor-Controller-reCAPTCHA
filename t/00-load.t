@@ -6,4 +6,4 @@ BEGIN {
     use_ok( 'Catalyst::TraitFor::Controller::reCAPTCHA' );
 }
 
-diag( "Testing Catalyst::TraitFor::Controller::reCAPTCHA $Catalyst::TraitFor::Controller::reCAPTCHA, Perl $], $^X" );
+#diag( "Testing Catalyst::TraitFor::Controller::reCAPTCHA $Catalyst::TraitFor::Controller::reCAPTCHA::VERSION, Perl $], $^X" );

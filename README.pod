@@ -1,5 +1,4 @@
-Catalyst::TraitFor::Controller::reCAPTCHA
-=========================================
+=head1 Catalyst::TraitFor::Controller::reCAPTCHA
 
 This is Catalyst::Controller::reCAPTCHA (http://search.cpan.org/dist/Catalyst-Controller-reCAPTCHA/)
 as a controller role instead of a base controller.

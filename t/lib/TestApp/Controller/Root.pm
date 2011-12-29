@@ -26,8 +26,12 @@ sub default :Path {
 
 sub check : Local {
     my ($self, $c) = @_;
-    $c->forward('captcha_check');
-    $c->detach('default');
+    if ( $c->forward('captcha_check') ) {
+        $c->res->body( 'OK: ' . $c->stash->{recaptcha_ok} );
+    }
+    else {
+        $c->res->body( 'FAIL: ' . $c->stash->{recaptcha_error} );
+    }
 }
 
 1;

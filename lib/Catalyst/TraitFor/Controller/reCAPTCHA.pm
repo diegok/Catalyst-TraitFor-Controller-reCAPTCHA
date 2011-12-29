@@ -49,6 +49,7 @@ sub captcha_check :Private {
     }
 
     $c->stash( recaptcha_ok => $res->{is_valid} );
+    return $res->{is_valid};
 }
 
 1;

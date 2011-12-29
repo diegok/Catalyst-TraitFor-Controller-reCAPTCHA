@@ -21,13 +21,12 @@ $mech->content_contains('name="recaptcha_challenge_field"', 'Looks like recaptch
 
 $mech->submit_form(
     form_name => 'recaptcha',
-    fields => {    recaptcha_response_field => 'wrong',
-});
+    fields    => { 
+        recaptcha_response_field  => 'wrong',
+        recaptcha_challenge_field => 'false'
+    }
+);
 
 # obviously we can't test success automatically :/
-$mech->content_lacks('recaptcha error: 1', 'Failed wrong answer'); 
-
-
-
-
+$mech->content_lacks('OK:', 'Failed wrong answer'); 
 

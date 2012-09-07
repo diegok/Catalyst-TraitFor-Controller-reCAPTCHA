@@ -81,7 +81,7 @@ In your controller
 
 =head1 SUMMARY
 
-Catalyst::Controller role around L<Capatcha::reCAPTCHA>.  Provides
+Catalyst::Controller role around L<Captcha::reCAPTCHA>.  Provides
 a number of C<Private> methods that deal with the recaptcha.
 
 This module is based/copied from L<Catalyst::Controller::reCAPTCHA>,

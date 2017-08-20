@@ -10,6 +10,12 @@ __PACKAGE__->config->{namespace} = '';
 sub default :Path { 
     my ( $self, $c ) = @_; 
 
+    my $data = $c->req->params;
+
+    if ($data && $data->{test} eq 'v2') {
+        $c->config->{recaptcha}->{version} = 'v2';
+    }
+
     $c->forward('captcha_get');
 
     my $body =

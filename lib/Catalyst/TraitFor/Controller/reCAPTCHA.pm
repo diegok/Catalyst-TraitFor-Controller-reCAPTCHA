@@ -14,12 +14,13 @@ sub captcha_get :Private {
     my ( $self, $c ) = @_;
     my $recaptcha;
 
-    if (lc($c->config->{recaptcha}->{version} || '') eq 'v2') {
+    if (lc($c->config->{recaptcha}{version} || '') eq 'v2') {
         $recaptcha = $self->recaptcha->get_html_v2(
             $c->config->{recaptcha}{pub_key},
             $c->config->{recaptcha}{options}
-        ); 
-    } else {
+        );
+    }
+    else {
         $recaptcha = $self->recaptcha->get_html(
             $c->config->{recaptcha}{pub_key},
             $c->stash->{recaptcha_error},
@@ -44,14 +45,15 @@ sub captcha_check :Private {
     }
 
     my $res;
-    if (lc($c->config->{recaptcha}->{version} || '') eq 'v2') {
+    if (lc($c->config->{recaptcha}{version} || '') eq 'v2') {
         $ENV{PERL_LWP_SSL_VERIFY_HOSTNAME} = $c->req->secure;
         $res = $self->recaptcha->check_answer_v2(
             $c->config->{recaptcha}{priv_key},
             $response_v2,
             $c->req->address
         );
-    } else {
+    }
+    else {
         $res = $self->recaptcha->check_answer(
             $c->config->{recaptcha}{priv_key},
             $c->req->address,
@@ -59,7 +61,7 @@ sub captcha_check :Private {
             $response
         );
     }
-    
+
     croak 'Failed to get valid result from reCaptcha'
         unless ref $res eq 'HASH';
 
@@ -143,7 +145,7 @@ true if there is success. This means you can do:
  }
 
 or alternatively:
- 
+
  $c->forward(captcha_check);
  if ( $c->stash->{recaptcha_ok} ) {
    # do something based on the reCAPTCHA passing
@@ -155,8 +157,8 @@ set with the error string provided by L<Captcha::reCAPTCHA>.
 =head1 SEE ALSO
 
 =for :list
-* L<Captcha::reCAPTCHA> 
-* L<Catalyst::Controller> 
+* L<Captcha::reCAPTCHA>
+* L<Catalyst::Controller>
 * L<Catalyst>
 
 =head1 ACKNOWLEDGEMENTS
